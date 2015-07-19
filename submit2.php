@@ -11,13 +11,13 @@ catch(PDOException $e) {
 }
 
 $name = $_POST['name'];
-$date= $_POST['date'];
+$datetime = $_POST['date'] . ' ' . $_POST['time'] . ':00';
 $recurring = $_POST['recurring'];
 $location = $_POST['location'];
 $num_meals = $_POST['num_meals'];
 
 $STH = $DBH->prepare($store);
-$STH->execute(array(':name' => $name, ':date' => $date, ':recurring' => $recurring, ':location' => $location, ':num_meals' => $num_meals));
+$STH->execute(array(':name' => $name, ':date' => $datetime, ':recurring' => $recurring, ':location' => $location, ':num_meals' => $num_meals));
 
 echo "Successful insert";
 ?>
