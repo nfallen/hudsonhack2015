@@ -22,9 +22,6 @@
 	  </script>
  	</head>
  	<body>
-	 <?php 
-	 	echo '<p>Hello World</p>';
-	 ?> 
 	 <form action="submit.php" method="post">
 			<div class="form-item"> 
 				Name of Organization: <input type="text" name="name" /> 
