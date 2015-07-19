@@ -59,7 +59,8 @@ html .login-wrap p {
   font: 'Raleway', Helvetica, sans-serif;
   font-weight: 400;
   font-size: 16px;
-  /*padding: 2px;*/
+  line-height: 1.7;
+  margin: 0;
 }
 
 html .login-wrap h2 {
@@ -80,15 +81,9 @@ html .login-wrap .form .dropdown{
 }
 
 html .login-wrap .form .dropdown ul {
-  /*display: block;*/
   max-width: 100px;
   left: 0;
   right: 0;
-  /*text-align: center;*/
-  /*margin: 0 auto;*/
-  /*padding-top: 3px;*/
-  /*font-size: 12px;*/
-  /*padding-bottom: 5px;*/
 }
 
 html .login-wrap .form .form-item{
@@ -197,5 +192,6 @@ html .submitted {
 
 .submit-btn-wrapper {
   text-align: center;
+  padding-top: 20px;
 }
 
