@@ -11,13 +11,14 @@ catch(PDOException $e) {
 }
 
 $name = $_POST['name'];
-$datetime = $_POST['date'] . ' ' . $_POST['time'] . ':00';
+$date = $_POST['date'];
+$time = $_POST['time'];
+$datetime_obj = DateTime::createFromFormat('j/m/Y H:i:s', $date . ' ' . $time . ':00');
+$datetime = $datetime_obj->format ('Y-j-m H:i:s');
 $recurring = $_POST['recurring'];
 $street_address = $_POST['street_address'];
 $zipcode = $_POST['zipcode'];
 $num_meals = $_POST['quantity'];
-
-error_log($_POST['time']);
 
 $STH = $DBH->prepare($store);
 $STH->execute(array(
@@ -29,5 +30,5 @@ $STH->execute(array(
 	':num_meals' => $num_meals,
 	));
 
-echo "Successful insert";
+echo "Successful insert" . $datetime;
 ?>
