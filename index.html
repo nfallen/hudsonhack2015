@@ -35,10 +35,10 @@
                             <input type="text" placeholder="Name of Organization" name="name" /> 
                         </div>
                         <div class="form-item">
-                            <input type="text" placeholder="Street Address" name="address" /> 
+                            <input type="text" placeholder="Street Address" name="street_address" /> 
                         </div>
                         <div class="form-item">
-                            <input type="text" placeholder="Zip Code" name="lzip" /> 
+                            <input type="text" placeholder="Zip Code" name="zipcode" /> 
                         </div>
                         <div class="form-item"> 
                             <input type="text" placeholder="Date" name='date' id="datepicker" /> 
@@ -47,18 +47,15 @@
                             <input type="text" placeholder="Time" name='time' id="timepicker"> 
                         </div>
                         <div class="form-item"> 
-                            <input type="text" name="comments" placeholder="Number of Meals" name='quantity'>
+                            <input type="text" placeholder="Number of Meals" name="quantity">
                         </div>
                         <div class="dropdown">
-                          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                            Donation Frequency <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" data-value="One time">One time</a></li>
-                            <li><a href="#" data-value="Daily">Daily</a></li>
-                            <li><a href="#" data-value="Weekly">Weekly</a></li>
-                            <li><a href="#" data-value="Monthly">Monthly</a></li>
-                          </ul>
+                          <select name="recurring">                      
+                          <option value="0">One Time</option>
+                          <option value="1">Daily</option>
+                          <option value="2">Weekly</option>
+                          <option value="3">Monthly</option>
+                          </select>
                         </div>
 
 
