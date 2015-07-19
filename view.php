@@ -14,22 +14,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $e->getMessage(); 
   }
   $zip = test_input($_POST['zipcode']);
-  if (strlen($zip) === 5 && is_numeric($zip)) {
+  if (test_zipcode($zip)) {
     $statement = $DBH->prepare($getInfo);
-    $statement->execute(array(':zip' => $zip));
+    $lim = 20;
+    $statement->bindParam(':zip', $zip, PDO::PARAM_STR);
+    $statement->bindParam(':lim', $lim, PDO::PARAM_INT);
+    $statement->execute();
     $rows = $statement->fetchAll();
     if ($rows) {
       $list_events .= '<ul class="list-events">';
       foreach ($rows as $row) {
+        $datetime_obj = DateTime::createFromFormat('Y-m-j H:i:s', $row['datetime']);
+        $datetime = $datetime_obj->format('l M j, Y g:i A');
+        $meal_string = $row['num_meals'] === 1 ? 'meal available' : 'meals available';
         $list_events .= '<li class="event-item">' . 
-                        '<h3>' . $row['name'] . '</h3>' . $row['street_address'] . $row['datetime'] . '</li>';
+                        '<h3 class="event-item-header">' . $row['name'] . '</h3>' . $row['street_address'] . ' ' .
+                        '</br>' . $datetime .
+                        '</br>' . $row['num_meals'] . ' meals available' . '</li>';
       }
       $list_events .= '</ul>';
 
     }
     else {
-      $emptymsg = "Sorry, there are no events in this zipcode at this time.";
+      $emptymsg = '<div class="no-events">Sorry, there are no upcoming events in this zipcode at this time.</div>';
     }
+  }
+  else {
+    $emptymsg = '<div class="no-events">Invalid zipcode</div>';
   }
 }
 ?>
@@ -62,8 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="find-container">
     <h1 class="find-title">FIND FOOD NEAR ME</h1>
     <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <input type="text" class="form-control" id="zipcode_search" placeholder="Zipcode" name="zipcode" maxlength="5">
-        <button type="submit" class="btn btn-primary">SEARCH</button>
+        <input type="text" class="form-control" id="zipcode-search" placeholder="Zipcode" name="zipcode" maxlength="5">
+        <button type="submit" class="btn btn-primary search-submit">SEARCH</button>
+        <a href="/index.php" class="btn btn-primary search-submit">HOME</a>
         <?php echo $list_events ?>
         <?php echo $emptymsg ?>
     </form>

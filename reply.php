@@ -1,6 +1,7 @@
 <?php
 require('creds.php');
 require('queries.php');
+require('validation.php');
 
 // now greet the sender
 header("content-type: text/xml");
@@ -17,12 +18,17 @@ catch(PDOException $e) {
 
 $msg = "";
 $body = strtolower($_REQUEST['Body']);
-if (strlen($body) === 5 && is_numeric($body)) {
+if (test_zipcode($body)) {
 	$statement = $DBH->prepare($getInfo);
-	$statement->execute(array(':zip' => $body));
+    $lim = 4;
+    $statement->bindParam(':zip', $body, PDO::PARAM_STR);
+    $statement->bindParam(':lim', $lim, PDO::PARAM_INT);
+	$statement->execute();
 	$rows = $statement->fetchAll();
 	foreach ($rows as $row) {
-		$msg .= $row['datetime'] . " " . $row['street_address'] . ", ";
+		$datetime_obj = DateTime::createFromFormat('Y-m-j H:i:s', $row['datetime']);
+        $datetime = $datetime_obj->format('m/j/Y h:ia');
+		$msg .= $datetime . " " . $row['street_address'] . ", ";
 	}
 	if ($msg === ""){
 		$msg = "Sorry, there are no events in this zipcode at this time.";

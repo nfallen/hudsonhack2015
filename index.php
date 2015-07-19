@@ -3,7 +3,7 @@ require('creds.php');
 require('queries.php');
 require('validation.php');
 // define variables and set to empty values
-$name = $date = $time = $num_meals = $street_address = $zipcode = $recurring = "";
+$name = $date = $time = $num_meals = $street_address = $zipcode = "";
 $nameErr = $dateErr = $timeErr = $numMealsErr = $addressErr = $zipcodeErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$recurring = $_POST['recurring'];
 
 	if (!($nameErr || $dateErr || $timeErr || $numMealsErr || $addressErr || $zipcodeErr)){
-		submit($name, $date, $time, $num_meals, $street_address, $zipcode, $recurring, $store, $user, $pass);
+		submit($name, $date, $time, $num_meals, $street_address, $zipcode, 0, $store, $user, $pass);
 		//TODO: give confirmation and clear form
 	}
 
@@ -50,8 +50,8 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
 		echo $e->getMessage(); 
 	}
 
-	$datetime_obj = DateTime::createFromFormat('j/m/Y H:i:s', $date . ' ' . $time . ':00');
-	$datetime = $datetime_obj->format ('Y-j-m H:i:s');
+	$datetime_obj = DateTime::createFromFormat('m/j/Y h:ia', $date . ' ' . $time);
+	$datetime = $datetime_obj->format ('Y-m-j H:i:s');
 
 	$STH = $DBH->prepare($store);
 	$STH->execute(array(
@@ -75,16 +75,16 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-	  <link rel="stylesheet" href="jquery.ui.timepicker.css?v=0.3.3" type="text/css" />
+	  <link rel="stylesheet" href="jquery.timepicker.css" type="text/css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="jquery.ui.timepicker.js?v=0.3.3"></script>
 
       <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,900' rel='stylesheet' type='text/css'>
       <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <script src="/jquery.timepicker.min.js"></script>
       <link rel="stylesheet" type="text/css" href="style.css">  
       <script>
       $(function() {
@@ -101,9 +101,12 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
     </header>
     <div class="spacer"></div>
     <div class= "login-wrap">
-    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    <a href="/view.php">View Events in My Zipcode</a><!-- <p>Food is wasted every hour of everyday, and we're going to change that.</p> -->
+    <p>Food is wasted all the time, and Wasteless aims to change that. 
+    If you have an event with extra food or you are a restaurant manager and you have to throw out food every day, let us know below.
+	Homeless individuals in the area or passerby looking to help can text the number 845-795-3322 in order to find places that need to get rid of surplus food in the near future.</p>
+    <div class="submit-btn-wrapper">
+    <a href="/view.php" class="btn btn-primary">View Events in My Zipcode</a>
+	</div><!-- <p>Food is wasted every hour of everyday, and we're going to change that.</p> -->
     </div>
     <div class= "login-wrap">  
         <div class="form">
@@ -133,19 +136,13 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
                             <input type="text" class="form-control" placeholder="Number of Meals" value="<?php echo $num_meals;?>" name="quantity">                            
                             <span class="error"><?php echo $numMealsErr;?></span>
                         </div>
-                        <div class="dropdown">
-                          <select name="recurring" value="<?php echo $recurring;?>">                      
-                          <option value="0">One Time</option>
-                          <option value="1">Daily</option>
-                          <option value="2">Weekly</option>
-                          <option value="3">Monthly</option>
-                          </select>
-                        </div>
                         
                         <!--<div class="submit-btn">
                         <button type="button" class="btn btn-success" value-"Submit">Success</button>
                         </div>-->
-                        <div class="submit-btn"> <input type="submit" value="Submit"></div>
+                        <div class="submit-btn-wrapper">
+                        	<input type="submit" class="btn btn-primary" id="event-add-submit" value="Submit">
+                    	</div>
             </form>
         </div>    
     </div> 

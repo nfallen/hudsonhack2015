@@ -123,21 +123,21 @@ html .submitted {
   padding: 15px;
 }
 
-html .submitted h2{
+.submitted-event h2{
   text-align: center;
   font-weight: 50%;
   font-size: 40px;
   font-style: bold;
   margin-top: 5px;
   margin-bottom: 12px;
-  color: #34495e;
+  color: #efefef;
   padding-bottom: 0px;
 }
 
-html .submitted p{
+.submitted-event {
 	text-align: center;
 	font-size: 25px;
-	color: #34495e;
+	color: #efefef;
 
 }
 
@@ -149,6 +149,7 @@ html .submitted p{
   color: #efefef;
   font-size: 42px;
   margin-top: 10px !important;
+  margin-bottom: 20px;
 }
 
 .find-container {
@@ -169,7 +170,32 @@ html .submitted p{
 }
 
 .event-item {
-  color:#efefef;
+  color:#aaa;
   text-align: left;
+  margin-left: 30px;
+}
+
+.event-item-header {
+  color:#efefef;
+}
+
+.no-events {
+  color:#efefef;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#zipcode-search {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.find-container .btn-primary {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.submit-btn-wrapper {
+  text-align: center;
 }
 
