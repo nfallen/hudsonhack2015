@@ -1,39 +1,74 @@
 body {
     background-image: url(form.jpg);
     background-size: cover;
-    font-family: 'Helvetica Neue', Arial, Sans-Serif;
+    /*font-family: 'Helvetica Neue', Arial, Sans-Serif;*/
+    font-family: 'Open Sans', sans-serif;
+}
+
+.main-header {
+  background-color: #ecf0f1;
+  margin: 0 auto;
+  color: #2980b9;
+  text-align: center;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 2rem;
+  border-bottom: 1px solid #2980b9;
+  display: block;
+  z-index: 3;
+}
+
+.main-header h1 {
+  font: 900 50px/0.8 'Open sans', Helvetica, sans-serif;
+  margin-bottom: 20px;
+  font-size: 36;
+  letter-spacing: 2.5;
+}
+
+.spacer {
+  padding: 30px;
+  /*position: fixed;*/
+  /*height: 100%;*/
+  width: 100%;
+  left: 0;
+  right: 0;
+  /*margin-bottom: 150px*/
+  z-index: -1;
+}
+
+.form {
+
+
 }
 
 html .login-wrap {
   position: relative;
   margin: 0 auto;
-  margin-top: 100px;
-  background: #ecf0f1;
-  width: 300px;
-  height: 470px;
+  margin-bottom: 50px;
+  /*background: #ecf0f1;*/
+  /*background: rgba(75, 112, 148, .9);*/
+  background: rgba(22, 57, 85, .9);
   border-radius: 5px;
-  box-shadow: 3px 3px 10px #333;
-  padding: 15px;
+  padding: 20px 28px;
+  color: #efefef;
+  max-width: 600px;
+  
+}
+
+html .login-wrap p {
+  font: 'Raleway', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  /*padding: 2px;*/
 }
 
 html .login-wrap h2 {
+  font: 'Open Sans', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
   text-align: center;
-  font-weight: 50%;
-  font-size: 40px;
-  font-style: bold;
-  margin-top: 5px;
-  margin-bottom: 12px;
-  color: #34495e;
-  padding-bottom: 0px;
-}
-
-html .login-wrap .form .form-item input[type="text"]{
-             display: block;
-             margin : 0 auto;
-             padding: 7px 7px; line-height: 18px;
-             font-size: 20px;
-             text-align: center;
-
+  color: #efefef;
+  padding-bottom: 10px;
 }
 
 html .login-wrap .form .dropdown{
@@ -44,8 +79,20 @@ html .login-wrap .form .dropdown{
 	padding-bottom: 5px;
 }
 
+html .login-wrap .form .dropdown ul {
+  /*display: block;*/
+  max-width: 100px;
+  left: 0;
+  right: 0;
+  /*text-align: center;*/
+  /*margin: 0 auto;*/
+  /*padding-top: 3px;*/
+  /*font-size: 12px;*/
+  /*padding-bottom: 5px;*/
+}
+
 html .login-wrap .form .form-item{
-	padding-bottom: 5px;
+  padding: 5px 20px;
 }
 html .login-wrap .form .submit-btn{
 	padding-top: 5px;
@@ -62,12 +109,6 @@ html .login-wrap .form .submit-btn input[type="submit"]{
 
 }
 
-h1 {
-    color: orange;
-    text-align: center;
-}
-
-
 
 
 html .submitted {
@@ -77,8 +118,8 @@ html .submitted {
   background: #ecf0f1;
   width: 300px;
   height: 170px;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px #333;
+  /*border-radius: 5px;*/
+  /*box-shadow: 3px 3px 10px #333;*/
   padding: 15px;
 }
 
@@ -100,6 +141,6 @@ html .submitted p{
 
 }
 
-input:focus::-webkit-input-placeholder {
+/*input:focus::-webkit-input-placeholder {
   color: transparent;
-}
+}*/
