@@ -100,22 +100,23 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
 ?>
 <html>
     <head>
-      <link rel="stylesheet" type="text/css" href="style.css">  
       <meta charset="utf-8">
       <title>jQuery UI Datepicker - Default functionality</title>
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 	  <link rel="stylesheet" href="jquery.ui.timepicker.css?v=0.3.3" type="text/css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script type="text/javascript" src="jquery.ui.timepicker.js?v=0.3.3"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="jquery.ui.timepicker.js?v=0.3.3"></script>
 
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-
+      <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,900' rel='stylesheet' type='text/css'>
+      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">  
       <script>
       $(function() {
         $( "#datepicker" ).datepicker();
@@ -126,32 +127,41 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
       </script>
     </head>
     <body>
-     <div class= "login-wrap">  
+    <header class="main-header clearfix">
+        <h1 class="title">WASTELESS</h1>
+    </header>
+    <div class="spacer"></div>
+    <div class= "login-wrap">
+    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <!-- <p>Food is wasted every hour of everyday, and we're going to change that.</p> -->
+    </div>
+    <div class= "login-wrap">  
         <div class="form">
-             <form class="form-class" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <h2>Sign Up!</h2>
+             <form class="form-class" action="submit2.php" method="post">
+                    <h2>SIGN UP TO DONATE FOOD</h2>
                         <div class="form-item"> 
-                            <input type="text" placeholder="Name of Organization" value="<?php echo $name;?>" name="name" /> 
+                            <input type="text" class="form-control" placeholder="Name of Organization" value="<?php echo $name;?>" name="name" /> 
                             <span class="error">* <?php echo $nameErr;?></span>
                         </div>
                         <div class="form-item">
-                            <input type="text" placeholder="Street Address" value="<?php echo $street_address;?>" name="street_address" />
+                            <input type="text" class="form-control" placeholder="Street Address" value="<?php echo $street_address;?>" name="street_address" />
                             <span class="error">* <?php echo $addressErr;?></span>
                         </div>
                         <div class="form-item">
-                            <input type="text" placeholder="Zip Code" value="<?php echo $zipcode;?>" name="zipcode" /> 
+                            <input type="text" class="form-control" placeholder="Zip Code" value="<?php echo $zipcode;?>" name="zipcode" /> 
                             <span class="error">* <?php echo $zipcodeErr;?></span>
                         </div>
                         <div class="form-item"> 
-                            <input type="text" placeholder="Date" value="<?php echo $date;?>" name='date' id="datepicker" />
+                            <input type="text" class="form-control" placeholder="Date" value="<?php echo $date;?>" name='date' id="datepicker" />
                             <span class="error">* <?php echo $dateErr;?></span> 
                         </div>
                         <div class="form-item">
-                            <input type="text" placeholder="Time" value="<?php echo $time;?>" name='time' id="timepicker">                            
+                            <input type="text" class="form-control" placeholder="Time" value="<?php echo $time;?>" name='time' id="timepicker">                            
                             <span class="error">* <?php echo $timeErr;?></span> 
                         </div>
                         <div class="form-item"> 
-                            <input type="text" placeholder="Number of Meals" value="<?php echo $num_meals;?>" name="quantity">                            
+                            <input type="text" class="form-control" placeholder="Number of Meals" value="<?php echo $num_meals;?>" name="quantity">                            
                             <span class="error">* <?php echo $numMealsErr;?></span>
                         </div>
                         <div class="dropdown">
@@ -162,11 +172,14 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
                           <option value="3">Monthly</option>
                           </select>
                         </div>
-
-
-                        <div class="submit-btn"> <input type="submit" value="Submit"></div>
+                        
+                        <div class="submit-btn">
+                        <button type="button" class="btn btn-success" value-"Submit">Success</button>
+                        </div>
+                        <!-- <div class="submit-btn"> <input type="submit" value="Submit"></div> -->
             </form>
         </div>    
     </div> 
  </body>
 </html>
+
