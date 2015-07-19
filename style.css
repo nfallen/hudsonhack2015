@@ -171,11 +171,11 @@ html .submitted {
 }
 
 .event-item-header {
-  color:#efefef;
+  color: #efefef;
 }
 
 .no-events {
-  color:#efefef;
+  color: #efefef;
   text-align: center;
   margin-top: 20px;
 }
@@ -183,6 +183,11 @@ html .submitted {
 #zipcode-search {
   margin-top: 20px;
   display: inline-block;
+}
+
+#search-zip-title {
+  color: #aaa;
+  font-size: 30;
 }
 
 .find-container .btn-primary {

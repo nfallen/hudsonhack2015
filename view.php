@@ -23,6 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rows = $statement->fetchAll();
     if ($rows) {
       $list_events .= '<ul class="list-events">';
+      $list_events .= '<li class="event-item">' . 
+                        '<h3 class="event-item-header" id="search-zip-title">' .
+                        'Zipcode: ' . $zip . 
+                        '</h3>' . '</li>';
       foreach ($rows as $row) {
         $datetime_obj = DateTime::createFromFormat('Y-m-j H:i:s', $row['datetime']);
         $datetime = $datetime_obj->format('l M j, Y g:i A');
