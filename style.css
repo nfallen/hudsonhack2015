@@ -1,0 +1,105 @@
+body {
+    background-image: url(form.jpg);
+    background-size: cover;
+    font-family: 'Helvetica Neue', Arial, Sans-Serif;
+}
+
+html .login-wrap {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 100px;
+  background: #ecf0f1;
+  width: 300px;
+  height: 470px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #333;
+  padding: 15px;
+}
+
+html .login-wrap h2 {
+  text-align: center;
+  font-weight: 50%;
+  font-size: 40px;
+  font-style: bold;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  color: #34495e;
+  padding-bottom: 0px;
+}
+
+html .login-wrap .form .form-item input[type="text"]{
+             display: block;
+             margin : 0 auto;
+             padding: 7px 7px; line-height: 18px;
+             font-size: 20px;
+             text-align: center;
+
+}
+
+html .login-wrap .form .dropdown{
+	display: block;
+	text-align: center;
+	padding-top: 3px;
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+
+html .login-wrap .form .form-item{
+	padding-bottom: 5px;
+}
+html .login-wrap .form .submit-btn{
+	padding-top: 5px;
+}
+html .login-wrap .form .submit-btn input[type="submit"]{
+	display: block;
+	margin: 0 auto;
+	padding: 7px 7px; line-height: 28px;
+    font-size: 20px;
+    text-align: center;
+    background: #009900;
+  	border: none;
+  	color: white;	
+
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+}
+
+
+
+
+html .submitted {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 230px;
+  background: #ecf0f1;
+  width: 300px;
+  height: 170px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #333;
+  padding: 15px;
+}
+
+html .submitted h2{
+  text-align: center;
+  font-weight: 50%;
+  font-size: 40px;
+  font-style: bold;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  color: #34495e;
+  padding-bottom: 0px;
+}
+
+html .submitted p{
+	text-align: center;
+	font-size: 25px;
+	color: #34495e;
+
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
