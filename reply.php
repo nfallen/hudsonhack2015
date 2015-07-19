@@ -28,7 +28,7 @@ if (test_zipcode($body)) {
 	foreach ($rows as $row) {
 		$datetime_obj = DateTime::createFromFormat('Y-m-j H:i:s', $row['datetime']);
         $datetime = $datetime_obj->format('m/j/Y h:ia');
-		$msg .= $datetime . " " . $row['street_address'] . ", ";
+		$msg .= $datetime . " " . $row['street_address'] . ",\r\n";
 	}
 	if ($msg === ""){
 		$msg = "Sorry, there are no events in this zipcode at this time.";

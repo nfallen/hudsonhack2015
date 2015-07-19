@@ -32,8 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$numMealsErr = "Please enter a valid number.";
 	}
 
-	$recurring = $_POST['recurring'];
-
 	if (!($nameErr || $dateErr || $timeErr || $numMealsErr || $addressErr || $zipcodeErr)){
 		submit($name, $date, $time, $num_meals, $street_address, $zipcode, 0, $store, $user, $pass);
 		//TODO: give confirmation and clear form
@@ -97,13 +95,13 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
     </head>
     <body>
     <header class="main-header clearfix">
-        <h1 class="title">WASTELESS</h1>
+        <h1 class="title"><a href="http://45.55.220.49">WASTELESS</a></h1>
     </header>
     <div class="spacer"></div>
     <div class= "login-wrap">
     <p>Food is wasted all the time, and Wasteless aims to change that. 
-    If you have an event with extra food or you are a restaurant manager and you have to throw out food every day, let us know below.
-	Homeless individuals in the area or passerby looking to help can text the number 845-795-3322 in order to find places that need to get rid of surplus food in the near future.</p>
+    If you have an event with extra food or you are a restaurant manager and you have to throw out food every day, let us know below.</p>
+	<p>Homeless individuals in the area or passerby looking to help can text the number 845-795-3322 in order to find places that need to get rid of surplus food in the near future.</p>
     <div class="submit-btn-wrapper">
     <a href="/view.php" class="btn btn-primary">View Events in My Zipcode</a>
 	</div><!-- <p>Food is wasted every hour of everyday, and we're going to change that.</p> -->
@@ -121,7 +119,7 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
                             <span class="error"><?php echo $addressErr;?></span>
                         </div>
                         <div class="form-item">
-                            <input type="text" class="form-control" placeholder="Zip Code" value="<?php echo $zipcode;?>" name="zipcode" /> 
+                            <input type="text" class="form-control" placeholder="Zip Code" value="<?php echo $zipcode;?>" name="zipcode" maxlength="5"/> 
                             <span class="error"><?php echo $zipcodeErr;?></span>
                         </div>
                         <div class="form-item"> 

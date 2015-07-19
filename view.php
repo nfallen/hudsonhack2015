@@ -57,10 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-  <link rel="stylesheet" href="jquery.ui.timepicker.css?v=0.3.3" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="jquery.ui.timepicker.js?v=0.3.3"></script>
 
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -71,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
   <header class="main-header clearfix">
-      <h1 class="title">WASTELESS</h1>
+      <h1 class="title"><a href="http://45.55.220.49">WASTELESS</a></h1>
   </header>
   <div class="spacer"></div>
   <div class="find-container">
@@ -79,7 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <input type="text" class="form-control" id="zipcode-search" placeholder="Zipcode" name="zipcode" maxlength="5">
         <button type="submit" class="btn btn-primary search-submit">SEARCH</button>
-        <a href="/index.php" class="btn btn-primary search-submit">HOME</a>
         <?php echo $list_events ?>
         <?php echo $emptymsg ?>
     </form>
