@@ -1,6 +1,7 @@
 <?php
 require('creds.php');
 require('queries.php');
+require('validation.php');
 // define variables and set to empty values
 $name = $date = $time = $num_meals = $street_address = $zipcode = $recurring = "";
 $nameErr = $dateErr = $timeErr = $numMealsErr = $addressErr = $zipcodeErr = "";
@@ -11,11 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$nameErr = "Please enter a name.";
 	}
 	$date = test_input($_POST['date']);
-	//todo: date format check
 	if (!$date) {
 		$dateErr = "Please enter a date.";
 	}
-	//todo: time format check
 	$time = test_input($_POST['time']);	
 	if (!$time) {
 		$timeErr = "Please enter a time.";
@@ -42,37 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-function test_address($data) {
-	$data = test_input($data);
-	if (strlen($data) > 40) {
-		return FALSE;
-	}
-	return $data;
-}
-
-function test_zipcode($data) {
-	$data = test_input($data);
-	if (strlen($data) !== 5 || !is_numeric($data)) {
-		return FALSE;
-	}
-	return $data;
-}
-
-function test_num_meals($data) {
-	$data = test_input($data);
-	if (!is_numeric($data)) {
-		return FALSE;
-	}
-	return $data;
-}
-
 function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $recurring, $store, $user, $pass){
 	try {
 		$DBH = new PDO("mysql:host=localhost;dbname=hudsonhack", $user, $pass);
@@ -95,13 +63,14 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
 		':num_meals' => $num_meals,
 		)
 	);
+	header("Location: thanks.html");
 }
 
 ?>
 <html>
     <head>
       <meta charset="utf-8">
-      <title>jQuery UI Datepicker - Default functionality</title>
+      <title>Wasteless</title>
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -134,35 +103,35 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
     <div class= "login-wrap">
     <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
     <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    <!-- <p>Food is wasted every hour of everyday, and we're going to change that.</p> -->
+    <a href="/view.php">View Events in My Zipcode</a><!-- <p>Food is wasted every hour of everyday, and we're going to change that.</p> -->
     </div>
     <div class= "login-wrap">  
         <div class="form">
-             <form class="form-class" action="submit2.php" method="post">
+             <form class="form-class" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <h2>SIGN UP TO DONATE FOOD</h2>
                         <div class="form-item"> 
                             <input type="text" class="form-control" placeholder="Name of Organization" value="<?php echo $name;?>" name="name" /> 
-                            <span class="error">* <?php echo $nameErr;?></span>
+                            <span class="error"><?php echo $nameErr;?></span>
                         </div>
                         <div class="form-item">
                             <input type="text" class="form-control" placeholder="Street Address" value="<?php echo $street_address;?>" name="street_address" />
-                            <span class="error">* <?php echo $addressErr;?></span>
+                            <span class="error"><?php echo $addressErr;?></span>
                         </div>
                         <div class="form-item">
                             <input type="text" class="form-control" placeholder="Zip Code" value="<?php echo $zipcode;?>" name="zipcode" /> 
-                            <span class="error">* <?php echo $zipcodeErr;?></span>
+                            <span class="error"><?php echo $zipcodeErr;?></span>
                         </div>
                         <div class="form-item"> 
                             <input type="text" class="form-control" placeholder="Date" value="<?php echo $date;?>" name='date' id="datepicker" />
-                            <span class="error">* <?php echo $dateErr;?></span> 
+                            <span class="error"><?php echo $dateErr;?></span> 
                         </div>
                         <div class="form-item">
                             <input type="text" class="form-control" placeholder="Time" value="<?php echo $time;?>" name='time' id="timepicker">                            
-                            <span class="error">* <?php echo $timeErr;?></span> 
+                            <span class="error"><?php echo $timeErr;?></span> 
                         </div>
                         <div class="form-item"> 
                             <input type="text" class="form-control" placeholder="Number of Meals" value="<?php echo $num_meals;?>" name="quantity">                            
-                            <span class="error">* <?php echo $numMealsErr;?></span>
+                            <span class="error"><?php echo $numMealsErr;?></span>
                         </div>
                         <div class="dropdown">
                           <select name="recurring" value="<?php echo $recurring;?>">                      
@@ -173,10 +142,10 @@ function submit($name, $date, $time, $num_meals, $street_address, $zipcode, $rec
                           </select>
                         </div>
                         
-                        <div class="submit-btn">
+                        <!--<div class="submit-btn">
                         <button type="button" class="btn btn-success" value-"Submit">Success</button>
-                        </div>
-                        <!-- <div class="submit-btn"> <input type="submit" value="Submit"></div> -->
+                        </div>-->
+                        <div class="submit-btn"> <input type="submit" value="Submit"></div>
             </form>
         </div>    
     </div> 

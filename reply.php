@@ -22,7 +22,7 @@ if (strlen($body) === 5 && is_numeric($body)) {
 	$statement->execute(array(':zip' => $body));
 	$rows = $statement->fetchAll();
 	foreach ($rows as $row) {
-		$msg .= $row['street_address'] . ", ";
+		$msg .= $row['datetime'] . " " . $row['street_address'] . ", ";
 	}
 	if ($msg === ""){
 		$msg = "Sorry, there are no events in this zipcode at this time.";
