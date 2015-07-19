@@ -99,3 +99,7 @@ html .submitted p{
 	color: #34495e;
 
 }
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
