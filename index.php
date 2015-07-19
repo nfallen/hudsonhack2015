@@ -27,6 +27,17 @@
 			<div class="form-item">	Date: 
 				<input type="text" name='date' id="datepicker"> 
 			</div>
+			<div class="form-item">	Time: 
+				<input type="text" name='time' id="timepicker"> 
+			</div>
+			<div class="form-item">	How often will this event occur? 
+				<div class="radio-item"><input type="radio" name="recurring" value="one_time">One time</input></div>
+				<div class="radio-item"><input type="radio" name="recurring" value="weekly">Daily</input></div>
+				<div class="radio-item"><input type="radio" name="recurring" value="weekly">Weekly</input></div>
+			</div>
+			<div class="form-item">	How many people will you be able to feed?
+				<input type="text" name="num_meals"> 
+			</div>
 			<div class="form-item"> Description: 
 				<textarea name="comments" rows="10" cols="40"></textarea>
 			</div>
