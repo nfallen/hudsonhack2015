@@ -22,7 +22,7 @@
 	  </script>
  	</head>
  	<body>
-	 <form action="submit.php" method="post">
+	 <form action="submit2.php" method="post">
 			<div class="form-item"> 
 				Name of Organization: <input type="text" name="name" /> 
 			</div>
