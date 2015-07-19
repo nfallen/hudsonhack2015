@@ -5,11 +5,19 @@
 	  <meta charset="utf-8">
 	  <title>jQuery UI Datepicker - Default functionality</title>
 	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <link rel="stylesheet" href="jquery.ui.timepicker.css?v=0.3.3" type="text/css" />
 	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  
+    <script type="text/javascript" src="jquery.ui.timepicker.js?v=0.3.3"></script>
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	  
 	  <script>
 	  $(function() {
 	    $( "#datepicker" ).datepicker();
+	    $( "#timepicker" ).timepicker();
 	  });
 	  </script>
  	</head>
