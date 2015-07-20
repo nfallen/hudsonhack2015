@@ -1,6 +1,6 @@
 # Wasteless
-Project for Hudson Hack NYC: Intern Edition
-Feeding the homeless and preventing good food from going to waste
+### Feeding the homeless and preventing good food from going to waste.
+Project for Hudson Hack NYC: Intern Edition. 
 
 ## Inspiration
 1/3 of New York City waste in landfills is food waste. 50% of this waste comes from restaurants. Meanwhile, the homeless and other underserved individuals are going hungry every day. According to a study by the New York City Coalition Against Hunger, 1 in 6 NYC residents are food insecure. Wasteless aims to change that by providing a simple, streamlined way for homeless people to find surplus food and for generous companies and individuals to help people and reduce waste.
